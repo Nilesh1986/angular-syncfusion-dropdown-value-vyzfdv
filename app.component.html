@@ -1,0 +1,32 @@
+<button mat-raised-button color="primary" class="mt-40" (click)="addNew()">
+  Add New
+</button>
+<i class="material-icons material-icons--outline"> screen_share </i>
+<div cdkDropList class="example-list mt-20" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let movie of movies; index as i" cdkDrag>
+    <div class="drag-index">{{ i + 1 }}</div>
+    <div class="w-10 drag-icon">
+      <i class="material-icons" cdkDragHandle>reorder</i>
+    </div>
+    <div class="w-100 drag-content">
+      <ejs-dropdownlist
+        required
+        cssClass="require"
+        [dataSource]="dataApplied"
+        [(ngModel)]="movie.name"
+        class="form-control"
+        type="text"
+        [fields]="fields"
+        draggable="true"
+      >
+      </ejs-dropdownlist>
+    </div>
+    <div class="w-10 delete-icon">
+      <button mat-icon-button>
+        <i class="material-icons" (click)="delete(i)">delete_outline</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="alert-text">Click Checkbox for drag your Div.</div>
